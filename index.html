@@ -1,34 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar Ramadan - Data Analyst Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); color: #333; line-height: 1.6; }
-        header { background: linear-gradient(to right, #2c3e50, #3498db); color: white; text-align: center; padding: 4rem 2rem; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);}
-        header h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);}
-        header p { font-size: 1.2rem; }
-        header a { display: inline-block; margin-top: 1rem; background: #e67e22; color: white; padding: 0.8rem 1.5rem; border-radius: 30px; font-weight: bold; text-decoration: none; transition: background 0.3s ease;}
-        header a:hover { background: #d35400; }
-        .container { max-width: 1100px; margin: auto; padding: 2rem; }
-        .section { background: white; border-radius: 15px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        :root {
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --section-bg: #fff;
+            --accent: #3498db;
+            --header-bg: linear-gradient(to right, #2c3e50, #3498db);
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --section-bg: #1e1e1e;
+            --accent: #e67e22;
+            --header-bg: linear-gradient(to right, #000000, #434343);
+            --shadow: rgba(0, 0, 0, 0.5);
+        }
+        header {
+            background: var(--header-bg);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            box-shadow: 0 4px 10px var(--shadow);
+        }
+        header h1 { font-family: 'Roboto', sans-serif; font-size: 3rem; margin-bottom: 0.5rem; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .section {
+            background: var(--section-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
         .section:hover { transform: translateY(-5px); }
-        h2 { font-family: 'Roboto', sans-serif; color: #2c3e50; font-size: 2rem; margin-bottom: 1rem; border-bottom: 3px solid #3498db; display: inline-block;}
-        p { font-size: 1.1rem; margin-bottom: 1rem;}
-        a { color: #3498db; text-decoration: none; font-weight: 600;}
-        a:hover { color: #e74c3c; text-decoration: underline;}
-        .project { background: #f9f9f9; border-left: 5px solid #3498db; padding: 1.5rem; margin-bottom: 1rem; border-radius: 5px; transition: background 0.3s; }
+        h2 { font-family: 'Roboto', sans-serif; color: var(--accent); font-size: 2rem; margin-bottom: 1rem; border-bottom: 3px solid var(--accent); display: inline-block; }
+        p { font-size: 1.1rem; margin-bottom: 1rem; }
+        a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        a:hover { color: #e74c3c; text-decoration: underline; }
+        .project { background: #f9f9f9; border-left: 5px solid var(--accent); padding: 1.5rem; margin-bottom: 1rem; border-radius: 5px; transition: background 0.3s ease; }
+        .dark-mode .project { background: #2c2c2c; }
         .project:hover { background: #e6f0fa; }
-        .project h3 { font-family: 'Roboto', sans-serif; color: #2c3e50; font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .skills-grid, .certifications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
-        .skill-item, .cert-item { background: #ecf0f1; padding: 1rem; border-radius: 5px; font-size: 1rem; text-align: center; transition: background 0.3s; }
-        .skill-item:hover, .cert-item:hover { background: #3498db; color: white; }
-        .contact-links { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
-        .contact-links a { background: #2c3e50; color: white; padding: 0.5rem 1rem; border-radius: 5px; transition: background 0.3s; }
-        .contact-links a:hover { background: #3498db; }
+        .dark-mode .project:hover { background: #444; }
+        .skills-grid, .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .skill-item, .cert-item {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        .dark-mode .skill-item, .dark-mode .cert-item {
+            background: #333;
+            color: white;
+        }
+        .skill-item:hover, .cert-item:hover { background: var(--accent); color: white; }
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .contact-links a {
+            background: #2c3e50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .contact-links a:hover { background: var(--accent); text-decoration: none; }
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--section-bg);
+            color: var(--text-color);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .toggle-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             .container { padding: 1rem; }
@@ -37,15 +115,11 @@
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Omar Ramadan Fattouh</h1>
-    <p>Data Analyst & Data Scientist - Turning Data Into Insights That Matter 🚀</p>
-    <a href="https://drive.google.com/file/d/1K6J2Y_QxtAzmJwDmn-x8gCcsEKY8nBiE/view" target="_blank">Download Resume</a>
-</header>
-
-<div class="container">
-
+    <header>
+        <h1>Omar Ramadan Fattouh</h1>
+        <p>Junior Data Analyst & Data Scientist 📊 | Transforming Data into Insights 🚀</p>
+        <button class="toggle-btn" onclick="toggleMode()">Toggle Mode</button>
+    </header><div class="container">
     <div class="section">
         <h2>About Me</h2>
         <p>I’m a results-driven Junior Data Analyst with hands-on experience in data cleaning, ETL processes, and building interactive dashboards. Currently pursuing a B.Sc. in Artificial Intelligence (expected 2026) at Benha National University, I’m passionate about predictive analytics and optimizing business outcomes. My freelance work on Upwork and Fiverr, along with my role as an ICPC Team Member, has sharpened my problem-solving and collaboration skills.</p>
@@ -53,25 +127,21 @@
 
     <div class="section">
         <h2>Projects</h2>
-
         <div class="project">
             <h3>Adidas Sales Analysis Dashboard - Power BI (2024)</h3>
             <p>Developed a Power BI dashboard analyzing over $2M units sold, $899M in sales, and $332M in profit. Visualized sales trends and regional metrics, improving decision-making by 20% using DAX and Power Query.</p>
             <a href="https://github.com/omarrama555" target="_blank">View on GitHub</a>
         </div>
-
         <div class="project">
             <h3>Sales Data Analysis - Excel, Power BI (2024)</h3>
             <p>Cleaned sales data with Power Query, reducing errors by 15%. Created Excel pivot tables and Power BI dashboards for revenue trends.</p>
             <a href="https://github.com/omarrama555" target="_blank">View on GitHub</a>
         </div>
-
         <div class="project">
             <h3>Customer Orders Dashboard - SQL, Power BI (2024)</h3>
             <p>Extracted order data using SQL, improving retrieval speed by 25%. Built a Power BI dashboard for order trends and customer segmentation.</p>
             <a href="https://github.com/omarrama555" target="_blank">View on GitHub</a>
         </div>
-
     </div>
 
     <div class="section">
@@ -114,8 +184,13 @@
             <a href="https://www.kaggle.com/omarrama555" target="_blank">Kaggle</a>
         </div>
     </div>
-
 </div>
+
+<script>
+    function toggleMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
 
 </body>
 </html>
